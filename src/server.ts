@@ -1,9 +1,11 @@
-import http from 'http';
+import express from 'express';
+const db = require('./database');
 
-const server = http.createServer((req, res) => { 
-    console.log(req.url, req.method, req.headers);
-    // process.exit();
+db.execute(`SELECT * FROM products`).then((result) => {
+    console.log(result);
+})
+.catch((err) => {
+    console.log(err);
 })
 
-server.listen(3000);
 
